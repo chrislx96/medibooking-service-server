@@ -28,6 +28,9 @@ public class Doctor {
     @Column(name = "last_name", unique = false, nullable = false)
     private String lastName;
 
+    @Column(name = "description", unique = false, nullable = false)
+    private String description;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     private Account account;

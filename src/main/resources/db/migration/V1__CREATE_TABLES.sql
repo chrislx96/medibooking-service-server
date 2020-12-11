@@ -21,6 +21,7 @@ create table doctors (
     gender varchar(10),
     first_name varchar(100),
     last_name varchar(100),
+    description varchar(400),
     account_id int references accounts (account_id)
 );
 

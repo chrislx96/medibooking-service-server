@@ -1,6 +1,10 @@
 package com.medibooking.bookingserviceserver.dtos.doctor;
 
+import com.medibooking.bookingserviceserver.entities.Language;
+import com.medibooking.bookingserviceserver.entities.Specialization;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 public class DoctorPutDto {
@@ -9,4 +13,7 @@ public class DoctorPutDto {
     private String gender;
     private String firstName;
     private String lastName;
+    private String description;
+    private Set<Language> languages;
+    private Set<Specialization> specializations;
 }
