@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,9 +33,11 @@ public class DoctorService {
         return doctorMapper.fromEntity(doctorRepository.save(doctor));
     }
 
-    public List<Doctor> getAllDoctors() {
+    public List<DoctorGetDto> getAllDoctors() {
 
-        return doctorRepository.findAll();
+        return doctorRepository.findAll().stream()
+                .map(doctor -> doctorMapper.fromEntity(doctor))
+                .collect(Collectors.toList());
     }
 
     public void delete(Long id) {

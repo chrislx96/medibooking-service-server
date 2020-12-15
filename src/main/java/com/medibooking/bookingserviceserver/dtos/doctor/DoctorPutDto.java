@@ -1,7 +1,7 @@
 package com.medibooking.bookingserviceserver.dtos.doctor;
 
-import com.medibooking.bookingserviceserver.entities.Language;
-import com.medibooking.bookingserviceserver.entities.Specialization;
+import com.medibooking.bookingserviceserver.dtos.language.LanguageGetDto;
+import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationGetDto;
 import lombok.Data;
 
 import java.util.Set;
@@ -14,6 +14,6 @@ public class DoctorPutDto {
     private String firstName;
     private String lastName;
     private String description;
-    private Set<Language> languages;
-    private Set<Specialization> specializations;
+    private Set<LanguageGetDto> languages;
+    private Set<SpecializationGetDto> specializations;
 }

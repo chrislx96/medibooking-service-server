@@ -21,7 +21,7 @@ public class Language {
 
     @ManyToMany
     @JoinTable(name = "doctors_languages",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "language_id"))
+            joinColumns = @JoinColumn(name = "language_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
     private Set<Doctor> doctors;
 }

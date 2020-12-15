@@ -11,6 +11,12 @@ plugins {
 	id "org.flywaydb.flyway" version "6.5.7"
 }
 
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/medibooking'
+	user = 'postgres'
+	password = 'mysecretpassword'
+}
+
 group = 'com.medibooking'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'

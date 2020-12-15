@@ -90,7 +90,8 @@ insert into doctors_languages (doctor_id, language_id) values
 (36,2),
 (37,2),
 (38,2),
-(39,2);
+(39,2),
+(40,5);
 
 insert into doctors_specializations (doctor_id, specialization_id) values
 (2,1),
@@ -145,7 +146,8 @@ insert into doctors_specializations (doctor_id, specialization_id) values
 (36,12),
 (37,1),
 (38,10),
-(39,17);
+(39,17),
+(40,1);
 
 
 

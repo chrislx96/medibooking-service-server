@@ -25,8 +25,8 @@ public class DoctorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Doctor>> find() {
-        List<Doctor> list = doctorService.getAllDoctors();
+    public ResponseEntity<List<DoctorGetDto>> find() {
+        List<DoctorGetDto> list = doctorService.getAllDoctors();
         return ResponseEntity.ok(list);
     }
 

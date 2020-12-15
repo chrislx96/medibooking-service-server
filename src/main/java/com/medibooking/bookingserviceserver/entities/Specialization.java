@@ -21,7 +21,7 @@ public class Specialization {
 
     @ManyToMany
     @JoinTable(name = "doctors_specializations",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "specialization_id"))
+            joinColumns = @JoinColumn(name = "specialization_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
     private Set<Doctor> doctors;
 }

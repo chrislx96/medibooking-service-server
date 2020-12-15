@@ -37,14 +37,14 @@ public class Doctor {
 
     @ManyToMany
     @JoinTable(name = "doctors_languages",
-            joinColumns = @JoinColumn(name = "language_id"),
-            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "language_id"))
     private Set<Language> languages;
 
     @ManyToMany
     @JoinTable(name = "doctors_specializations",
-            joinColumns = @JoinColumn(name = "specialization_id"),
-            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialization_id"))
     private Set<Specialization> specializations;
 
 }
