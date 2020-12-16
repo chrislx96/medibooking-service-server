@@ -50,12 +50,12 @@ public class AppointmentController {
     }
 
     @GetMapping(value = "/search", params = "patientId")
-    public ResponseEntity<List<AppointmentGetDto>> findByPatient(@PathVariable Long patientId) {
+    public ResponseEntity<List<AppointmentGetDto>> findByPatient(@RequestParam Long patientId) {
         return ResponseEntity.ok(appointmentService.findAppointmentsByPatient(patientId));
     }
 
     @GetMapping(value = "/search", params = "doctorId")
-    public ResponseEntity<List<AppointmentGetDto>> findByDoctor(@PathVariable Long doctorId) {
+    public ResponseEntity<List<AppointmentGetDto>> findByDoctor(@RequestParam Long doctorId) {
         return ResponseEntity.ok(appointmentService.findAppointmentsByDoctor(doctorId));
     }
 
