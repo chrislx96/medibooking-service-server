@@ -29,12 +29,17 @@ public class PatientController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/{patientId}")
+    @GetMapping("/patientId/{patientId}")
     public ResponseEntity<PatientGetDto> findById(@PathVariable Long patientId) {
         return ResponseEntity.ok(patientService.findPatientById(patientId));
     }
 
-    @GetMapping("search")
+    @GetMapping(value = "/search", params = "accountId")
+    public ResponseEntity<PatientGetDto> findByAccountId(@RequestParam Long accountId){
+        return ResponseEntity.ok(patientService.findPatientByAccountId(accountId));
+    }
+
+    @GetMapping(value = "/search", params = "patientName")
     public ResponseEntity<PatientGetDto> findByName(@RequestParam String patientName) {
         return ResponseEntity.ok(patientService.findPatientByName(patientName));
     }

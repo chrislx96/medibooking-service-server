@@ -2,6 +2,7 @@ package com.medibooking.bookingserviceserver.controllers;
 
 import com.medibooking.bookingserviceserver.dtos.auth.AuthGetDto;
 import com.medibooking.bookingserviceserver.dtos.auth.AuthPostDto;
+import com.medibooking.bookingserviceserver.services.AccountService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.SecretKey;
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class AuthController {
 
     private final SecretKey secretKey;
+    private final AccountService accountService;
 
     @PostMapping
     public ResponseEntity<AuthGetDto> getAuth(@RequestBody AuthPostDto authPostDto) {
@@ -42,6 +45,8 @@ public class AuthController {
                     .map(m -> new SimpleGrantedAuthority(m.get("authority")))
                     .collect(Collectors.toSet());
             authGetDto.setUsername(username);
+            Long accountId = accountService.findAccountByUsername(username).getId();
+            authGetDto.setAccountId(accountId);
             authGetDto.setGrantedAuthorities(grantedAuthorities);
         } catch (JwtException e) {
             return ResponseEntity.ok(null);

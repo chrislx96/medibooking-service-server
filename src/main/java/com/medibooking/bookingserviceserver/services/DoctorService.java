@@ -48,4 +48,7 @@ public class DoctorService {
         return doctorMapper.fromEntity(doctorRepository.getOne(id));
     }
 
+    public DoctorGetDto findDoctorByAccountId(Long accountId) {
+        return doctorMapper.fromEntity(doctorRepository.findByAccountId(accountId));
+    }
 }

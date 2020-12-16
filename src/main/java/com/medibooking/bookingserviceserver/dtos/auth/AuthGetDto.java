@@ -9,6 +9,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class AuthGetDto {
-    String username;
-    Set<SimpleGrantedAuthority> grantedAuthorities;
+    private Long accountId;
+    private String username;
+    private Set<SimpleGrantedAuthority> grantedAuthorities;
 }

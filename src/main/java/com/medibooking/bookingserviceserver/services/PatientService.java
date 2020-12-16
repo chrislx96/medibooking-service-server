@@ -41,6 +41,10 @@ public class PatientService {
         return patientMapper.fromEntity(patientRepository.getOne(id));
     }
 
+    public PatientGetDto findPatientByAccountId(Long accountId) {
+        return patientMapper.fromEntity(patientRepository.findByAccountId(accountId));
+    }
+
     public PatientGetDto findPatientByName(String name) {
         return patientMapper.fromEntity(patientRepository.findByFirstName(name));
     }
