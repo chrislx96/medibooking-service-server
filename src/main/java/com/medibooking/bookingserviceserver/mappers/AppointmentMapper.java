@@ -18,11 +18,19 @@ public interface AppointmentMapper {
     Appointment toEntity(AppointmentPostDto appointmentPostDto);
 
     @Mapping(target = "patient", source = "patient.id")
+    @Mapping(target = "patientFirstName", source = "patient.firstName")
+    @Mapping(target = "patientLastName", source = "patient.lastName")
     @Mapping(target = "doctor", source = "doctor.id")
+    @Mapping(target = "doctorFirstName", source = "doctor.firstName")
+    @Mapping(target = "doctorLastName", source = "doctor.lastName")
     AppointmentGetDto fromEntity(Appointment appointment);
 
     @Mapping(target = "patient", source = "patient.id")
+    @Mapping(target = "patientFirstName", source = "patient.firstName")
+    @Mapping(target = "patientLastName", source = "patient.lastName")
     @Mapping(target = "doctor", source = "doctor.id")
+    @Mapping(target = "doctorFirstName", source = "doctor.firstName")
+    @Mapping(target = "doctorLastName", source = "doctor.lastName")
     List<AppointmentGetDto> fromEntities(List<Appointment> appointments);
 
     @Mapping(target = "patient.id", source = "patient")

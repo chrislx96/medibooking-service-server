@@ -16,5 +16,9 @@ public class AppointmentGetDto {
     private String appointmentMessage;
     private String isCancelled;
     private Long patient;
+    private String patientFirstName;
+    private String patientLastName;
     private Long doctor;
+    private String doctorFirstName;
+    private String doctorLastName;
 }
