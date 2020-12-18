@@ -21,16 +21,16 @@ public class Appointment {
     private LocalDate date;
 
     @Column(name = "start_time")
-    private LocalTime startTime;
+    private LocalTime startingTime;
 
     @Column(name = "end_time")
-    private LocalTime endTime;
+    private LocalTime endingTime;
 
-    @Column(name = "appointment_message")
-    private String appointmentMessage;
+    @Column(name = "notes")
+    private String notes;
 
     @Column(name = "is_cancelled")
-    private String isCancelled;
+    private Boolean isCancelled;
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)

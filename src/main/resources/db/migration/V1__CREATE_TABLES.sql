@@ -49,8 +49,8 @@ create table appointments (
     appointment_date date,
     start_time time,
     end_time time,
-    appointment_message varchar(300),
-    is_cancelled varchar(50),
+    notes varchar(300),
+    is_cancelled boolean,
     patient_id int references patients (patient_id),
     doctor_id int references doctors (doctor_id)
 );

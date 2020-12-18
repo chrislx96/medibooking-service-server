@@ -15,12 +15,12 @@ public class AppointmentPostDto {
     private LocalDate date;
     //  pattern = "HH:mm:ss"
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime startTime;
+    private LocalTime startingTime;
     //  pattern = "HH:mm:ss"
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime endTime;
-    private String appointmentMessage;
-    private String isCancelled;
+    private LocalTime endingTime;
+    private String notes;
+    private Boolean isCancelled;
     private Long patient;
     private Long doctor;
 }

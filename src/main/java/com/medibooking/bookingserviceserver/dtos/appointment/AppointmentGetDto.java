@@ -11,10 +11,10 @@ import java.time.LocalTime;
 public class AppointmentGetDto {
     private Long id;
     private LocalDate date;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private String appointmentMessage;
-    private String isCancelled;
+    private LocalTime startingTime;
+    private LocalTime endingTime;
+    private String notes;
+    private Boolean isCancelled;
     private Long patient;
     private String patientFirstName;
     private String patientLastName;
