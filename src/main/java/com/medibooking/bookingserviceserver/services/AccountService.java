@@ -28,15 +28,14 @@ public class AccountService {
 
     public AccountGetDto createAccount(AccountPostDto accountPostDto){
         Account account = accountMapper.toEntity(accountPostDto);
-        Authority authority = authorityRepository.getOne(Long.valueOf(2));
-        Set<Authority> authorities = Stream.of(authority).collect(Collectors.toSet());
+        Set<Authority> authorities = Stream.of(authorityRepository.getOne(Long.valueOf(2))).collect(Collectors.toSet());
         account.setAuthorities(authorities);
         Patient patient = new Patient();
         patient.setAccount(account);
-        patient.setFirstName("");
-        patient.setAge(0);
-        patient.setGender("");
-        patient.setLastName("");
+        patient.setFirstName(accountPostDto.getFirstName());
+        patient.setLastName(accountPostDto.getLastName());
+        patient.setAge(accountPostDto.getAge());
+        patient.setGender(accountPostDto.getGender());
         patientRepository.save(patient);
         return accountMapper.fromEntity(accountRepository.save(account));
     }
