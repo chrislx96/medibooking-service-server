@@ -31,6 +31,12 @@ public class AppointmentService {
         return appointmentMapper.fromEntity(appointmentRepository.save(appointment));
     }
 
+    public AppointmentGetDto cancelAppointment(Long appointmentId){
+        Appointment appointment = appointmentRepository.getOne(appointmentId);
+        appointment.setIsCancelled(true);
+        return appointmentMapper.fromEntity(appointmentRepository.save(appointment));
+    }
+
     public void deleteAppointment(Long id) {
         appointmentRepository.deleteById(id);
     }

@@ -27,8 +27,8 @@ public class AppointmentController {
     }
 
     @PutMapping("/{appointmentId}")
-    public ResponseEntity<AppointmentGetDto> modify(@PathVariable Long appointmentId, @RequestBody AppointmentPutDto appointmentPutDto) {
-        AppointmentGetDto appointmentGetDto = appointmentService.modifyAppointment(appointmentId, appointmentPutDto);
+    public ResponseEntity<AppointmentGetDto> modify(@PathVariable Long appointmentId) {
+        AppointmentGetDto appointmentGetDto = appointmentService.cancelAppointment(appointmentId);
         return ResponseEntity.ok(appointmentGetDto);
     }
 
