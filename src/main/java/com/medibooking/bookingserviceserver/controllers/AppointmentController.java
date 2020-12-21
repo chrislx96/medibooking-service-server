@@ -5,6 +5,7 @@ import com.medibooking.bookingserviceserver.dtos.appointment.AppointmentPostDto;
 import com.medibooking.bookingserviceserver.dtos.appointment.AppointmentPutDto;
 import com.medibooking.bookingserviceserver.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -60,12 +61,17 @@ public class AppointmentController {
     }
 
     @GetMapping(value = "/search", params = {"patientId", "date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@PathVariable Long patientId, LocalDate date) {
+    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@RequestParam Long patientId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfAPatientByDate(patientId, date));
     }
 
     @GetMapping(value = "/search", params = {"doctorId", "date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@PathVariable Long doctorId, LocalDate date) {
+    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@RequestParam Long doctorId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfADoctorByDate(doctorId, date));
+    }
+
+    @GetMapping(value = "/search", params = {"date"})
+    public ResponseEntity<List<AppointmentGetDto>> findByDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return ResponseEntity.ok(appointmentService.findAppointmentsByDate(date));
     }
 }

@@ -58,4 +58,8 @@ public class AppointmentService {
     public List<AppointmentGetDto> findAppointmentsOfADoctorByDate(Long doctorId, LocalDate date) {
         return appointmentMapper.fromEntities(appointmentRepository.findAppointmentsOfADoctorByDate(doctorId, date));
     }
+
+    public List<AppointmentGetDto> findAppointmentsByDate(LocalDate date) {
+        return appointmentMapper.fromEntities(appointmentRepository.findAppointmentsByDate(date));
+    }
 }
