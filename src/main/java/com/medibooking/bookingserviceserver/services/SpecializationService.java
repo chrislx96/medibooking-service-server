@@ -9,6 +9,7 @@ import com.medibooking.bookingserviceserver.repositories.SpecializationRepositor
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +35,10 @@ public class SpecializationService {
         return speMapper.fromEntity(speRepository.save(spe));
     }
 
-    public List<Specialization> getAllSpe() {
-        return speRepository.findAll();
+    public List<SpecializationGetDto> getAllSpe() {
+        return speRepository.findAll().stream()
+                .map(language -> speMapper.fromEntity(language))
+                .collect(Collectors.toList());
     }
 
     public void delete(Long id) {
