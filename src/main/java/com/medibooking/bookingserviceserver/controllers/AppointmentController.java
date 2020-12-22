@@ -61,12 +61,12 @@ public class AppointmentController {
     }
 
     @GetMapping(value = "/search", params = {"patientId", "date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@RequestParam Long patientId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate date) {
+    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@RequestParam Long patientId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfAPatientByDate(patientId, date));
     }
 
     @GetMapping(value = "/search", params = {"doctorId", "date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@RequestParam Long doctorId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate date) {
+    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@RequestParam Long doctorId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfADoctorByDate(doctorId, date));
     }
 
