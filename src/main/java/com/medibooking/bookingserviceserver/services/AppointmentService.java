@@ -31,6 +31,12 @@ public class AppointmentService {
         return appointmentMapper.fromEntity(appointmentRepository.save(appointment));
     }
 
+    public AppointmentGetDto cancelAppointment(Long appointmentId){
+        Appointment appointment = appointmentRepository.getOne(appointmentId);
+        appointment.setIsCancelled(true);
+        return appointmentMapper.fromEntity(appointmentRepository.save(appointment));
+    }
+
     public void deleteAppointment(Long id) {
         appointmentRepository.deleteById(id);
     }
@@ -57,5 +63,9 @@ public class AppointmentService {
 
     public List<AppointmentGetDto> findAppointmentsOfADoctorByDate(Long doctorId, LocalDate date) {
         return appointmentMapper.fromEntities(appointmentRepository.findAppointmentsOfADoctorByDate(doctorId, date));
+    }
+
+    public List<AppointmentGetDto> findAppointmentsByDate(LocalDate date) {
+        return appointmentMapper.fromEntities(appointmentRepository.findAppointmentsByDate(date));
     }
 }

@@ -49,7 +49,7 @@ create table appointments (
     appointment_date date,
     start_time time,
     end_time time,
-    notes varchar(300),
+    notes varchar(5000),
     is_cancelled boolean,
     patient_id int references patients (patient_id),
     doctor_id int references doctors (doctor_id)

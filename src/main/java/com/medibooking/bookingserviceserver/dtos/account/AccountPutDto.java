@@ -7,6 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AccountPutDto {
     private Long id;
-    private String username;
     private String encodedPassword;
 }
