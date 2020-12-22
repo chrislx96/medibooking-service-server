@@ -2,6 +2,7 @@ package com.medibooking.bookingserviceserver.controllers;
 
 import com.medibooking.bookingserviceserver.dtos.account.AccountGetDto;
 import com.medibooking.bookingserviceserver.dtos.account.AccountPostDto;
+import com.medibooking.bookingserviceserver.dtos.account.AccountPutDto;
 import com.medibooking.bookingserviceserver.services.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,12 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<AccountGetDto> add(@RequestBody AccountPostDto accountPostDto) {
         AccountGetDto accountGetDto = accountService.createAccount(accountPostDto);
+        return ResponseEntity.ok(accountGetDto);
+    }
+
+    @PutMapping("/{accountId}")
+    public ResponseEntity<AccountGetDto> changePassword(@PathVariable Long accountId, @RequestBody AccountPutDto accountPutDto){
+        AccountGetDto accountGetDto = accountService.changePassword(accountId,accountPutDto);
         return ResponseEntity.ok(accountGetDto);
     }
 

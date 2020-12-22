@@ -2,7 +2,11 @@ package com.medibooking.bookingserviceserver.services;
 
 import com.medibooking.bookingserviceserver.dtos.account.AccountGetDto;
 import com.medibooking.bookingserviceserver.dtos.account.AccountPostDto;
+import com.medibooking.bookingserviceserver.dtos.account.AccountPutDto;
+import com.medibooking.bookingserviceserver.dtos.appointment.AppointmentGetDto;
+import com.medibooking.bookingserviceserver.dtos.appointment.AppointmentPutDto;
 import com.medibooking.bookingserviceserver.entities.Account;
+import com.medibooking.bookingserviceserver.entities.Appointment;
 import com.medibooking.bookingserviceserver.entities.Authority;
 import com.medibooking.bookingserviceserver.entities.Patient;
 import com.medibooking.bookingserviceserver.mappers.AccountMapper;
@@ -49,6 +53,19 @@ public class AccountService {
         return accountRepository.findAll().stream()
                 .map(account -> accountMapper.fromEntity(account))
                 .collect(Collectors.toList());
+    }
+
+    public String findUsernameById(Long accountId){
+        Account account = accountRepository.getOne(accountId);
+        return account.getUsername();
+    }
+
+    public AccountGetDto changePassword(Long accountId, AccountPutDto accountPutDto) {
+        Account account = new Account();
+        accountMapper.copy(accountPutDto, account);
+        account.setId(accountId);
+        account.setUsername(findUsernameById(accountId));
+        return accountMapper.fromEntity(accountRepository.save(account));
     }
 
     public void deleteAccount(Long accountId){
