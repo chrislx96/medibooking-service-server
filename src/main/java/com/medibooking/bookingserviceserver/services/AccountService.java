@@ -65,6 +65,8 @@ public class AccountService {
         accountMapper.copy(accountPutDto, account);
         account.setId(accountId);
         account.setUsername(findUsernameById(accountId));
+        Set<Authority> authorities = Stream.of(authorityRepository.getOne(Long.valueOf(2))).collect(Collectors.toSet());
+        account.setAuthorities(authorities);
         return accountMapper.fromEntity(accountRepository.save(account));
     }
 
