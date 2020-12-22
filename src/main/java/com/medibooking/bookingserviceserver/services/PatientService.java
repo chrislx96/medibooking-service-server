@@ -3,6 +3,7 @@ package com.medibooking.bookingserviceserver.services;
 import com.medibooking.bookingserviceserver.dtos.patient.PatientGetDto;
 import com.medibooking.bookingserviceserver.dtos.patient.PatientPostDto;
 import com.medibooking.bookingserviceserver.dtos.patient.PatientPutDto;
+import com.medibooking.bookingserviceserver.entities.Account;
 import com.medibooking.bookingserviceserver.entities.Patient;
 import com.medibooking.bookingserviceserver.mappers.PatientMapper;
 import com.medibooking.bookingserviceserver.repositories.PatientRepository;
@@ -28,6 +29,7 @@ public class PatientService {
         Patient patient = new Patient();
         patientMapper.copy(patientPutDto, patient);
         patient.setId(patientId);
+        patient.setAccount(findPatientAccountIdByPatientId(patientId));
         return patientMapper.fromEntity(patientRepository.save(patient));
     }
 
@@ -39,6 +41,11 @@ public class PatientService {
 
     public PatientGetDto findPatientById(Long id) {
         return patientMapper.fromEntity(patientRepository.getOne(id));
+    }
+
+    public Account findPatientAccountIdByPatientId(Long patientId){
+        Patient patient = patientRepository.getOne(patientId);
+        return patient.getAccount();
     }
 
     public PatientGetDto findPatientByAccountId(Long accountId) {
